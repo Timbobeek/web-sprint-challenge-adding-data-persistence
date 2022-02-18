@@ -25,7 +25,17 @@ const resources = [
 
 const tasks = [
   // Finish Lambda School
-  {task_description: }
+  {task_description: 'Attend lectures', task_completed: 0, project_id: 1},
+  {task_description: 'Finish hw', task_completed: 1, project_id: 1 },
+  {task_description: 'Ace sprint challenges', task_notes: 'complete mvp, polish code, submit', task_completed: 1, project_id: 1 },
+  // Find a job
+  {task_description: 'Make a resume and cover letter', task_completed: 1, project_id: 2},
+  {task_description: 'Apply', task_completed: 1, project_id: 2 },
+  {task_description: 'Go to interviews', task_notes: 'attend interviews and make a great impression', task_completed: 0, project_id: 2 },
+  {task_description: 'Accept an offer', task_notes: 'carefully read the offer', task_completed: 0, project_id: 2 },
+  // Enjoy the rich life
+  {task_description: 'buy everything I want', task_completed: 0, project_id: 3},
+  {task_description: 'go everywhere I want', task_completed: 0, project_id: 3 }
 ]
 
 
