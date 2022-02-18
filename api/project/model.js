@@ -1,9 +1,8 @@
-function getProjectById(project_id){
-  return Promise.resolve(`nice project ${project_id}`)
+const db = require('../../data/dbConfig')
+
+async function getProjects(){
+  const projectRows = await db('projects as p')
+  return projectRows
 }
 
-function getProjects(){
-  return Promise.resolve('here are all the projects')
-}
-
-module.exports = {getProjectById, getProjects}
+module.exports = {getProjects}
