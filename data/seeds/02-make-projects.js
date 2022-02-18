@@ -23,6 +23,22 @@ const resources = [
   {resource_name: 'free time'}
 ]
 
+const project_resources = [
+  // Finish Lambda School
+  {project_id: 1, resource_id: 1},
+  {project_id: 1, resource_id: 2, projectResource_notes: 'their support keeps me motivated'},
+  {project_id: 1, resource_id: 3},
+  {project_id: 1, resource_id: 4},
+  // Find a job
+  {project_id: 2, resource_id: 3},
+  {project_id: 2, resource_id: 6, projectResource_notes: 'looking for a job takes time'},
+  // Enjoy the rich life
+  {project_id: 3, resource_id: 4},
+  {project_id: 3, resource_id: 5},
+  {project_id: 3, resource_id: 6}
+]
+
+
 const tasks = [
   // Finish Lambda School
   {task_description: 'Attend lectures', task_completed: 0, project_id: 1},
@@ -39,15 +55,9 @@ const tasks = [
 ]
 
 
-
-
-
-
-
-
-
-
-
-
-
-exports.seed = function (knex) {};
+exports.seed = async function (knex) {
+  await knex('projects').insert(projects)
+  await knex('resources').insert(resources)
+  await knex('tasks').insert(tasks)
+  await knex('project_resources').insert(project_resources)
+};
