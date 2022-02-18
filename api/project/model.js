@@ -8,7 +8,7 @@ function mapProject(record) {
 }
 
 async function getAll() {
-  const projects = await db("projects as p");
+  const projects = await db("projects");
   return projects.map(mapProject);
 }
 
