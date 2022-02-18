@@ -7,15 +7,15 @@ function mapProject(record) {
     : record;
 }
 
-async function getProjects() {
+async function getAll() {
   const projects = await db("projects as p");
   return projects.map(mapProject);
 }
 
-async function addProject(projectData) {
+async function add(projectData) {
   const [id] = await db("projects").insert(projectData);
   const project = await db("projects").where({ project_id: id }).first();
   return mapProject(project);
 }
 
-module.exports = { getProjects, addProject };
+module.exports = { getAll, add };
