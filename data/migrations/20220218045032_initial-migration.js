@@ -2,10 +2,15 @@
 exports.up = async function(knex) {
   await knex.schema
     .createTable('projects', table =>{
-      table.increments()
+      table.increments('project_id')
+      table.string('project_name').notNullable()
+      table.string('project_description')
+      table.integer('project_completed').defaultTo(0)    ///funky one, stored as integers but then displayed as a boolean
     })
     .createTable('resources', table =>{
-      table.increments()
+      table.increments('resource_id')
+      table.string('resource_name').notNullable().unique()
+      table.string('resource_description')
     })
     .createTable('tasks', table =>{
       table.increments()
