@@ -1,8 +1,9 @@
 const db = require("../../data/dbConfig");
+const { convertToBoolean } = require("../utils/boolean");
 
 function mapProject(record) {
   return record
-    ? { ...record, project_completed: Boolean(record.project_completed) }
+    ? { ...record, project_completed: convertToBoolean(record.project_completed) }
     : record;
 }
 
