@@ -1,26 +1,17 @@
-const router = require('express').Router()
-const Task = require('./model')
+const router = require("express").Router();
+const middleware = require("./middleware");
+const Task = require("./model");
 
+router.post("/", middleware.validateTaskData, (req, res, next) => {
+  Task.add(req.taskData)
+    .then((task) => res.status(201).json(task))
+    .catch(next);
+});
 
-router.get('/tasks', (req,res,next)=>{
-  Task.getTasks()
-    .then(tasks => {
-      if(!tasks){
-        res.status(200).json([])}
-      else{
-        res.status(200).json(tasks)
-      }
-    })
-    .catch(next)
-})
-
-
-router.use((err, req, res, next)=>{ // eslint-disable-line
-  res.status(500).json({
-    customMessage: 'something went wrong ;(',
-    message: err.message,
-    stack: err.stack
-  })
-})
+router.get("/", (req, res, next) => {
+  Task.getAll()
+    .then((tasks) => res.status(200).json(tasks ? tasks : []))
+    .catch(next);
+});
 
 module.exports = router;
