@@ -1,8 +1,14 @@
-const db = require('../../data/dbConfig')
+const db = require("../../data/dbConfig");
 
-async function getResources(){
-  const projectRows = await db('resources as r')
-  return projectRows
+async function getAll() {
+  const resources = await db("resources as r");
+  return resources;
 }
 
-module.exports = {getResources}
+async function add(resourceData) {
+  const [id] = await db("resources").insert(resourceData);
+  const resource = await db("resources").where({ resource_id: id }).first();
+  return resource;
+}
+
+module.exports = { getAll, add };
