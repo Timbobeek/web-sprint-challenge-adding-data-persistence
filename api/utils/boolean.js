@@ -1,9 +1,29 @@
+const trueStrings = ["true", "1"];
+const falseStrings = ["false", "0"];
+const boolStrings = [...trueStrings, ...falseStrings];
+
 const isValidBoolean = (value) => {
-  return value === "true" || value === "false" || typeof value === "number";
+  return (
+    typeof value === "boolean" ||
+    typeof value === "number" ||
+    (value !== undefined && boolStrings.includes(value.toLowerCase()))
+  );
 };
 
 const convertToBoolean = (value) => {
-  return Boolean(typeof value === "number" ? value : value === "true");
+  if (typeof value === "boolean") {
+    return value;
+  }
+
+  if (typeof value === "number") {
+    return Boolean(value);
+  }
+
+  if (typeof value === "string" && trueStrings.includes(value.toLowerCase())) {
+    return true;
+  }
+
+  return false;
 };
 
 module.exports = {
